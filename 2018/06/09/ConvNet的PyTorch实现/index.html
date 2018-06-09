@@ -12,7 +12,7 @@
     
     <title>
         
-            归档: 2018 | 
+            ConvNet的PyTorch实现 | 
         
         Hexo
     </title>
@@ -65,15 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2018 | Hexo">
+    <meta property="og:title" content="ConvNet的PyTorch实现 | Hexo">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
     
 
     
+        <meta property="article:published_time" content="6月 09, 2018" />
+        <meta property="article:modified_time" content="6月 09, 2018" />
+    
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="归档: 2018 | Hexo">
+    <meta name="twitter:title" content="ConvNet的PyTorch实现 | Hexo">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -81,13 +84,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/2018/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/06/09/ConvNet的PyTorch实现/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Hexo",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "AeroX",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Any sufficiently advanced technology is indistinguishable from magic."
+    },
+    "headline": "ConvNet的PyTorch实现",
+    "url": "http://yoursite.com/2018/06/09/ConvNet的PyTorch实现/index.html",
+    "datePublished": "6月 09, 2018",
+    "dateModified": "6月 09, 2018",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
 
 
     
@@ -275,392 +308,267 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#third-party-library"><span class="post-toc-number">1.</span> <span class="post-toc-text">third-party library</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#torch-manual-seed-1-reproducible"><span class="post-toc-number">2.</span> <span class="post-toc-text">torch.manual_seed(1)    # reproducible</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hyper-Parameters"><span class="post-toc-number">3.</span> <span class="post-toc-text">Hyper Parameters</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#plot-one-example"><span class="post-toc-number">4.</span> <span class="post-toc-text">plot one example</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Data-Loader-for-easy-mini-batch-return-in-training-the-image-batch-shape-will-be-50-1-28-28"><span class="post-toc-number">5.</span> <span class="post-toc-text">Data Loader for easy mini-batch return in training, the image batch shape will be (50, 1, 28, 28)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pick-2000-samples-to-speed-up-testing"><span class="post-toc-number">6.</span> <span class="post-toc-text">pick 2000 samples to speed up testing</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#following-function-plot-with-labels-is-for-visualization-can-be-ignored-if-not-interested"><span class="post-toc-number">7.</span> <span class="post-toc-text">following function (plot_with_labels) is for visualization, can be ignored if not interested</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#training-and-testing"><span class="post-toc-number">8.</span> <span class="post-toc-text">training and testing</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#print-10-predictions-from-test-data"><span class="post-toc-number">9.</span> <span class="post-toc-text">print 10 predictions from test data</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/06/09/ConvNet的PyTorch实现/">ConvNet的PyTorch实现</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            `import os
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/06/09/ConvNet的PyTorch实现/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/dog.jpeg" width="44px" height="44px" alt="AeroX's avatar">
-            </div>
-            <div>
-                <strong>AeroX</strong>
-                <span>6月 09, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/06/09/Convolutional-Neural-Network-卷积神经网络/">Convolutional Neural Network | 卷积神经网络</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/06/09/Convolutional-Neural-Network-卷积神经网络/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/dog.jpeg" width="44px" height="44px" alt="AeroX's avatar">
-            </div>
-            <div>
-                <strong>AeroX</strong>
-                <span>6月 09, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/05/31/Support-Vector-Machine-支持向量机/">Support Vector Machine | 支持向量机</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/05/31/Support-Vector-Machine-支持向量机/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/dog.jpeg" width="44px" height="44px" alt="AeroX's avatar">
-            </div>
-            <div>
-                <strong>AeroX</strong>
-                <span>5月 31, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/05/30/k-Nearest-Neighbor-k近邻算法/">k-Nearest Neighbor | k近邻算法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/05/30/k-Nearest-Neighbor-k近邻算法/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/dog.jpeg" width="44px" height="44px" alt="AeroX's avatar">
-            </div>
-            <div>
-                <strong>AeroX</strong>
-                <span>5月 30, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/05/27/The-Gettysburg-Address/">The Gettysburg Address</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/05/27/The-Gettysburg-Address/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/dog.jpeg" width="44px" height="44px" alt="AeroX's avatar">
-            </div>
-            <div>
-                <strong>AeroX</strong>
-                <span>5月 27, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/05/23/CS231n-Convolutional-Neural-Networks-for-Visual-Recognition/">CS231n: Convolutional Neural Networks for Visual Recognition</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/05/23/CS231n-Convolutional-Neural-Networks-for-Visual-Recognition/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/dog.jpeg" width="44px" height="44px" alt="AeroX's avatar">
-            </div>
-            <div>
-                <strong>AeroX</strong>
-                <span>5月 23, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                ConvNet的PyTorch实现
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/dog.jpeg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>AeroX</strong>
+        <span>6月 09, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=ConvNet的PyTorch实现&url=http://yoursite.com/2018/06/09/ConvNet的PyTorch实现/index.html&via=AeroX" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/09/ConvNet的PyTorch实现/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/09/ConvNet的PyTorch实现/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hexo&title=ConvNet的PyTorch实现&summary=&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/06/09/ConvNet的PyTorch实现/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yoursite.com/2018/06/09/ConvNet的PyTorch实现/index.html&text=ConvNet的PyTorch实现" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>`import os</p>
+<h1 id="third-party-library"><a href="#third-party-library" class="headerlink" title="third-party library"></a>third-party library</h1><p>import torch<br>import torch.nn as nn<br>import torch.utils.data as Data<br>import torchvision<br>import matplotlib.pyplot as plt</p>
+<h1 id="torch-manual-seed-1-reproducible"><a href="#torch-manual-seed-1-reproducible" class="headerlink" title="torch.manual_seed(1)    # reproducible"></a>torch.manual_seed(1)    # reproducible</h1><h1 id="Hyper-Parameters"><a href="#Hyper-Parameters" class="headerlink" title="Hyper Parameters"></a>Hyper Parameters</h1><p>EPOCH = 1               # train the training data n times, to save time, we just train 1 epoch<br>BATCH_SIZE = 50<br>LR = 0.001              # learning rate<br>DOWNLOAD_MNIST = True</p>
+<p>train_data = torchvision.datasets.MNIST(<br>    root=’./mnist/‘,<br>    train=True,                                     # this is training data<br>    transform=torchvision.transforms.ToTensor(),    # Converts a PIL.Image or numpy.ndarray to</p>
+<pre><code>                                                # torch.FloatTensor of shape (C x H x W) and normalize in the range [0.0, 1.0]
+download=DOWNLOAD_MNIST,
+</code></pre><p>)</p>
+<h1 id="plot-one-example"><a href="#plot-one-example" class="headerlink" title="plot one example"></a>plot one example</h1><p>print(train_data.train_data.size())                 # (60000, 28, 28)<br>print(train_data.train_labels.size())               # (60000)<br>plt.imshow(train_data.train_data[0].numpy(), cmap=’gray’)<br>plt.title(‘%i’ % train_data.train_labels[0])<br>plt.show()</p>
+<h1 id="Data-Loader-for-easy-mini-batch-return-in-training-the-image-batch-shape-will-be-50-1-28-28"><a href="#Data-Loader-for-easy-mini-batch-return-in-training-the-image-batch-shape-will-be-50-1-28-28" class="headerlink" title="Data Loader for easy mini-batch return in training, the image batch shape will be (50, 1, 28, 28)"></a>Data Loader for easy mini-batch return in training, the image batch shape will be (50, 1, 28, 28)</h1><p>train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)</p>
+<h1 id="pick-2000-samples-to-speed-up-testing"><a href="#pick-2000-samples-to-speed-up-testing" class="headerlink" title="pick 2000 samples to speed up testing"></a>pick 2000 samples to speed up testing</h1><p>test_data = torchvision.datasets.MNIST(root=’./mnist/‘, train=False)<br>test_x = torch.unsqueeze(test_data.test_data, dim=1).type(torch.FloatTensor)[:2000]/255.   # shape from (2000, 28, 28) to (2000, 1, 28, 28), value in range(0,1)<br>test_y = test_data.test_labels[:2000]</p>
+<p>class CNN(nn.Module):<br>    def <strong>init</strong>(self):<br>        super(CNN, self).<strong>init</strong>()<br>        self.conv1 = nn.Sequential(         # input shape (1, 28, 28)<br>            nn.Conv2d(<br>                in_channels=1,              # input height<br>                out_channels=16,            # n_filters<br>                kernel_size=5,              # filter size<br>                stride=1,                   # filter movement/step<br>                padding=2,                  # if want same width and length of this image after con2d, padding=(kernel_size-1)/2 if stride=1<br>            ),                              # output shape (16, 28, 28)<br>            nn.ReLU(),                      # activation<br>            nn.MaxPool2d(kernel_size=2),    # choose max value in 2x2 area, output shape (16, 14, 14)<br>        )<br>        self.conv2 = nn.Sequential(         # input shape (16, 14, 14)<br>            nn.Conv2d(16, 32, 5, 1, 2),     # output shape (32, 14, 14)<br>            nn.ReLU(),                      # activation<br>            nn.MaxPool2d(2),                # output shape (32, 7, 7)<br>        )<br>        self.out = nn.Linear(32 <em> 7 </em> 7, 10)   # fully connected layer, output 10 classes</p>
+<pre><code>def forward(self, x):
+    x = self.conv1(x)
+    x = self.conv2(x)
+    x = x.view(x.size(0), -1)           # flatten the output of conv2 to (batch_size, 32 * 7 * 7)
+    output = self.out(x)
+    return output, x    # return x for visualization
+</code></pre><p>cnn = CNN()<br>print(cnn)  # net architecture</p>
+<p>optimizer = torch.optim.Adam(cnn.parameters(), lr=LR)   # optimize all cnn parameters<br>loss_func = nn.CrossEntropyLoss()                       # the target label is not one-hotted</p>
+<h1 id="following-function-plot-with-labels-is-for-visualization-can-be-ignored-if-not-interested"><a href="#following-function-plot-with-labels-is-for-visualization-can-be-ignored-if-not-interested" class="headerlink" title="following function (plot_with_labels) is for visualization, can be ignored if not interested"></a>following function (plot_with_labels) is for visualization, can be ignored if not interested</h1><p>from matplotlib import cm<br>try: from sklearn.manifold import TSNE; HAS_SK = True<br>except: HAS_SK = False; print(‘Please install sklearn for layer visualization’)<br>def plot_with_labels(lowDWeights, labels):<br>    plt.cla()<br>    X, Y = lowDWeights[:, 0], lowDWeights[:, 1]<br>    for x, y, s in zip(X, Y, labels):<br>        c = cm.rainbow(int(255 * s / 9)); plt.text(x, y, s, backgroundcolor=c, fontsize=9)<br>    plt.xlim(X.min(), X.max()); plt.ylim(Y.min(), Y.max()); plt.title(‘Visualize last layer’); plt.show(); plt.pause(0.01)</p>
+<p>plt.ion()</p>
+<h1 id="training-and-testing"><a href="#training-and-testing" class="headerlink" title="training and testing"></a>training and testing</h1><p>for epoch in range(EPOCH):<br>    for step, (b_x, b_y) in enumerate(train_loader):   # gives batch data, normalize x when iterate train_loader</p>
+<pre><code>output = cnn(b_x)[0]               # cnn output
+loss = loss_func(output, b_y)   # cross entropy loss
+optimizer.zero_grad()           # clear gradients for this training step
+loss.backward()                 # backpropagation, compute gradients
+optimizer.step()                # apply gradients
+
+if step % 50 == 0:
+    test_output, last_layer = cnn(test_x)
+    pred_y = torch.max(test_output, 1)[1].data.squeeze()
+    accuracy = float(sum(pred_y == test_y)) / float(test_y.size(0))
+    print(&apos;Epoch: &apos;, epoch, &apos;| train loss: %.4f&apos; % loss.data.numpy(), &apos;| test accuracy: %.2f&apos; % accuracy)
+    if HAS_SK:
+        # Visualization of trained flatten layer (T-SNE)
+        tsne = TSNE(perplexity=30, n_components=2, init=&apos;pca&apos;, n_iter=5000)
+        plot_only = 500
+        low_dim_embs = tsne.fit_transform(last_layer.data.numpy()[:plot_only, :])
+        labels = test_y.numpy()[:plot_only]
+        plot_with_labels(low_dim_embs, labels)
+</code></pre><p>plt.ioff()</p>
+<h1 id="print-10-predictions-from-test-data"><a href="#print-10-predictions-from-test-data" class="headerlink" title="print 10 predictions from test data"></a>print 10 predictions from test data</h1><p>test_output, _ = cnn(test_x[:10])<br>pred_y = torch.max(test_output, 1)[1].data.numpy().squeeze()<br>print(pred_y, ‘prediction number’)<br>print(test_y[:10].numpy(), ‘real number’)<br>`</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/06/09/Convolutional-Neural-Network-卷积神经网络/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
