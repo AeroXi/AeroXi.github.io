@@ -335,7 +335,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#VideoBERT"><span class="post-toc-number">1.</span> <span class="post-toc-text">VideoBERT</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#A-Joint-Model-for-Video-and-Language-Representation-Learning"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">A Joint Model for Video and Language Representation Learning</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Abstract"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Abstract</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Introduction"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Introduction</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#videobert"><span class="post-toc-number">1.</span> <span class="post-toc-text">VideoBERT</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#a-joint-model-for-video-and-language-representation-learning"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">A Joint Model for Video and Language Representation Learning</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#abstract"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Abstract</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#introduction"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Introduction</span></a></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -489,20 +489,22 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="VideoBERT"><a href="#VideoBERT" class="headerlink" title="VideoBERT"></a>VideoBERT</h1><p><code>by Google Research</code></p>
-<h3 id="A-Joint-Model-for-Video-and-Language-Representation-Learning"><a href="#A-Joint-Model-for-Video-and-Language-Representation-Learning" class="headerlink" title="A Joint Model for Video and Language Representation Learning"></a>A Joint Model for Video and Language Representation Learning</h3><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>自监督学习在处理大量无标签数据上发挥了重大的作用。然而大多现有的方法只能学习到低级特征，作者提出了一种视觉语言联合模型，无需监督即可学习高级特征。</p>
+        <h1 id="videobert">VideoBERT</h1>
+<p><code>by Google Research</code></p>
+<h3 id="a-joint-model-for-video-and-language-representation-learning">A Joint Model for Video and Language Representation Learning</h3>
+<h2 id="abstract">Abstract</h2>
+<p>自监督学习在处理大量无标签数据上发挥了重大的作用。然而大多现有的方法只能学习到低级特征，作者提出了一种视觉语言联合模型，无需监督即可学习高级特征。</p>
 <p>由于BERT在语言模型上取得了巨大的成功，我们用BERT来学习视觉和语言的token序列的双向联合分布。</p>
 <p>我们在action classification和video captioning等任务上使用这个模型，并且超过了video captioning的State of the art。</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>我们用三种方法来建立视觉和语言的关系：</p>
+<h2 id="introduction">Introduction</h2>
+<p>我们用三种方法来建立视觉和语言的关系：</p>
 <ul>
-<li><p>语音识别来将语音转为文字</p>
-</li>
-<li><p>对预训练视频分类模型的低级时空视觉特征进行向量量化（VQ）</p>
-</li>
-<li>BERT来学习离散token序列的联合分布</li>
+<li><p>语音识别来将语音转为文字</p></li>
+<li>对预训练视频分类模型的低级时空视觉特征进行向量量化（VQ）</li>
+<li><p>BERT来学习离散token序列的联合分布</p></li>
 </ul>
 <p>这个模型可以用于多种任务。例如，我们可以进行文字转视频，也就是给输入的一段文字配上对应的视频。我们也可以进行更传统的视频描述任务。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g52zbv1fjuj31e40jyq96.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g52zbv1fjuj31e40jyq96.jpg"></p>
 
     
 
