@@ -335,7 +335,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#k-Nearest-Neighbor"><span class="post-toc-number">1.</span> <span class="post-toc-text">k-Nearest Neighbor</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Nearest-Neighbor"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Nearest Neighbor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#k-Nearest-Neighbor-1"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">k-Nearest Neighbor</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#k-nearest-neighbor"><span class="post-toc-number">1.</span> <span class="post-toc-text">k-Nearest Neighbor</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -489,11 +489,8 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="k-Nearest-Neighbor"><a href="#k-Nearest-Neighbor" class="headerlink" title="k-Nearest Neighbor"></a>k-Nearest Neighbor</h2><p>kNN是CS231n介绍的第一个分类器，这是一个比较简单的分类器，然而在图像处理上并没有什么卵用，效率和准确率也都比较拙计。</p>
-<hr>
-<h3 id="Nearest-Neighbor"><a href="#Nearest-Neighbor" class="headerlink" title="Nearest Neighbor"></a>Nearest Neighbor</h3><p>kNN最简单的情况是k = 1，即Nearest Neighbor，只取最近的一个<br>NN算法找到距离测试图像最近的训练样本，并把这一样本的标签当做测试图像的标签。<br>首先把图像矩阵转为向量，再计算两向量之间的距离<br>向量间距离有两种计算方法：<br>L1距离：<br><img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_1%28I_1%2CI_2%29%3D%5Csum_p%7CI%5Ep_1-I%5Ep_2%7C" alt="L1距离"><br>（各坐标差之和，又叫曼哈顿距离）<br>L2距离：<br><img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_2%28I_1%2CI_2%29%3D%5Csqrt%7B+%5Csum_p%28I%5Ep_1-I%5Ep_2%29%5E2%7D" alt="L2距离"><br>欧几里得距离<br>sqrt是单调函数，实际使用时可以不开方，不影响比较大小</p>
-<hr>
-<h3 id="k-Nearest-Neighbor-1"><a href="#k-Nearest-Neighbor-1" class="headerlink" title="k-Nearest Neighbor"></a>k-Nearest Neighbor</h3><p>为了获得更好的分类效果，kNN找到最近的k个图像，以出现次数最多的标签作为测试图像的标签。<br><img src="https://coolshell.cn/wp-content/uploads/2012/08/220px-KnnClassification.svg_.png" alt="kNN"></p>
+        <h2 id="k-nearest-neighbor">k-Nearest Neighbor</h2>
+<p>kNN&#x662F;CS231n&#x4ECB;&#x7ECD;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x7136;&#x800C;&#x5728;&#x56FE;&#x50CF;&#x5904;&#x7406;&#x4E0A;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5375;&#x7528;&#xFF0C;&#x6548;&#x7387;&#x548C;&#x51C6;&#x786E;&#x7387;&#x4E5F;&#x90FD;&#x6BD4;&#x8F83;&#x62D9;&#x8BA1;&#x3002; <strong><em> ### Nearest Neighbor kNN&#x6700;&#x7B80;&#x5355;&#x7684;&#x60C5;&#x51B5;&#x662F;k = 1&#xFF0C;&#x5373;Nearest Neighbor&#xFF0C;&#x53EA;&#x53D6;&#x6700;&#x8FD1;&#x7684;&#x4E00;&#x4E2A; NN&#x7B97;&#x6CD5;&#x627E;&#x5230;&#x8DDD;&#x79BB;&#x6D4B;&#x8BD5;&#x56FE;&#x50CF;&#x6700;&#x8FD1;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x5E76;&#x628A;&#x8FD9;&#x4E00;&#x6837;&#x672C;&#x7684;&#x6807;&#x7B7E;&#x5F53;&#x505A;&#x6D4B;&#x8BD5;&#x56FE;&#x50CF;&#x7684;&#x6807;&#x7B7E;&#x3002; &#x9996;&#x5148;&#x628A;&#x56FE;&#x50CF;&#x77E9;&#x9635;&#x8F6C;&#x4E3A;&#x5411;&#x91CF;&#xFF0C;&#x518D;&#x8BA1;&#x7B97;&#x4E24;&#x5411;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB; &#x5411;&#x91CF;&#x95F4;&#x8DDD;&#x79BB;&#x6709;&#x4E24;&#x79CD;&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;&#xFF1A; L1&#x8DDD;&#x79BB;&#xFF1A; <img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_1%28I_1%2CI_2%29%3D%5Csum_p%7CI%5Ep_1-I%5Ep_2%7C" alt="L1&#x8DDD;&#x79BB;"> &#xFF08;&#x5404;&#x5750;&#x6807;&#x5DEE;&#x4E4B;&#x548C;&#xFF0C;&#x53C8;&#x53EB;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#xFF09; L2&#x8DDD;&#x79BB;&#xFF1A; <img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_2%28I_1%2CI_2%29%3D%5Csqrt%7B+%5Csum_p%28I%5Ep_1-I%5Ep_2%29%5E2%7D" alt="L2&#x8DDD;&#x79BB;"> &#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x8DDD;&#x79BB; sqrt&#x662F;&#x5355;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x53EF;&#x4EE5;&#x4E0D;&#x5F00;&#x65B9;&#xFF0C;&#x4E0D;&#x5F71;&#x54CD;&#x6BD4;&#x8F83;&#x5927;&#x5C0F; </em></strong> ### k-Nearest Neighbor &#x4E3A;&#x4E86;&#x83B7;&#x5F97;&#x66F4;&#x597D;&#x7684;&#x5206;&#x7C7B;&#x6548;&#x679C;&#xFF0C;kNN&#x627E;&#x5230;&#x6700;&#x8FD1;&#x7684;k&#x4E2A;&#x56FE;&#x50CF;&#xFF0C;&#x4EE5;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x6700;&#x591A;&#x7684;&#x6807;&#x7B7E;&#x4F5C;&#x4E3A;&#x6D4B;&#x8BD5;&#x56FE;&#x50CF;&#x7684;&#x6807;&#x7B7E;&#x3002; <img src="https://coolshell.cn/wp-content/uploads/2012/08/220px-KnnClassification.svg_.png" alt="kNN"></p>
 
     
 
@@ -880,24 +877,7 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
         </body>
     
 </html>
