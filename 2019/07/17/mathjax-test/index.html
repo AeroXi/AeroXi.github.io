@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="7月 17, 2019" />
-        <meta property="article:modified_time" content="7月 17, 2019" />
+        <meta property="article:modified_time" content="7月 18, 2019" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "mathjax test",
     "url": "http://yoursite.com/2019/07/17/mathjax-test/index.html",
     "datePublished": "7月 17, 2019",
-    "dateModified": "7月 17, 2019",
+    "dateModified": "7月 18, 2019",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -421,7 +421,7 @@
             <p class="post-title">
                 mathjax test
             </p>
-            <p><span class="math display">\[\sqrt{3x-1}+(1+x)^2\]</span> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1g52w7c0zn7j30fe082dfs.jpg"></p>
+            <p><span class="math display">\[\sqrt{3x-1}+(1+x)^2\]</span></p>
 
         </div>
     
@@ -545,6 +545,26 @@
 
 <!-- MathJax Load-->
 
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script type="text/javascript" src="/js/mathjax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
 <script type="text/ls-javascript" id="lazy-load">
     // Offer LazyLoad
     queue.offer(function(){
@@ -583,7 +603,22 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-        </body>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
     
 </html>
