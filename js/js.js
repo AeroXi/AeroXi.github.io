@@ -2270,15 +2270,12 @@ $(document).ready(function() {
 
     'use strict';
 
-    var burger = document.querySelector('.MD-burger-icon');
-
-    if (burger !== null)
-    burger.addEventListener(
+    document.querySelector('.MD-burger-icon').addEventListener(
         'click',
         function() {
             var child;
 
-            child = document.getElementById("MD-burger-id").classList;
+            child = this.childNodes[1].classList;
 
             if (child.contains('MD-burger-arrow')) {
                 child.remove('MD-burger-arrow');

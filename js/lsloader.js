@@ -36,7 +36,7 @@
         return val
     }
 
-    versionString = "/*" + (window.materialVersion || 'unknownVersion') + "*/";
+    versionString = "/*" + materialVersion + "*/";
 
     lsloader.clean = function () {
         try {
@@ -46,13 +46,8 @@
             }
             keys.forEach(function (key) {
                 var data = lsloader.getLS(key);
-                if (window.oldVersion) {
-                    var remove = window.oldVersion.reduce(function(p,c) {
-                        return p || data.indexOf('/*' + c + '*/') !== -1
-                    }, false)
-                    if (remove) {
-                        lsloader.removeLS(key);
-                    }
+                if (data && data.indexOf(versionString) === -1) {
+                    lsloader.removeLS(key);
                 }
             })
         } catch (e) {
@@ -70,18 +65,13 @@
      * jspath 文件线上路径,带md5版本号,用于加载资源,区分资源版本
      * cssonload css加载成功时候调用,用于配合页面展现
      * */
-    lsloader.load = function (jsname, jspath, cssonload, isJs) {
-        if (typeof cssonload === 'boolean') {
-            isJs = cssonload;
-            cssonload = undefined;
-        }
-        isJs = isJs || false;
+    lsloader.load = function (jsname, jspath, cssonload) {
         cssonload = cssonload || function () { };
         var code;
         code = this.getLS(jsname);
         if (code && code.indexOf(versionString) === -1) {   //ls 版本 codestartv* 每次换这个版本 所有ls作废
             this.removeLS(jsname);
-            this.requestResource(jsname, jspath, cssonload, isJs);
+            this.requestResource(jsname, jspath, cssonload);
             return
         }
         //取出对应文件名下的code
@@ -90,11 +80,11 @@
             if (versionNumber != jspath) {
                 console.log("reload:" + jspath)
                 this.removeLS(jsname);
-                this.requestResource(jsname, jspath, cssonload, isJs);
+                this.requestResource(jsname, jspath, cssonload);
                 return
             }
             code = code.split(versionString)[1];
-            if (isJs) {
+            if (/\.js?.+$/.test(versionNumber)) {
                 this.jsRunSequence.push({ name: jsname, code: code })
                 this.runjs(jspath, jsname, code);
             } else {
@@ -103,7 +93,7 @@
             }
         } else {
             //null xhr获取资源
-            this.requestResource(jsname, jspath, cssonload, isJs);
+            this.requestResource(jsname, jspath, cssonload);
         }
     };
 
@@ -115,14 +105,14 @@
      * 保证css能正确覆盖规则 css 加载成功后调用cssonload 帮助控制
      * 异步加载样式造车的dom树渲染错乱问题
      * */
-    lsloader.requestResource = function (name, path, cssonload, isJs) {
+    lsloader.requestResource = function (name, path, cssonload) {
         var that = this
-        if (isJs) {
+        if (/\.js?.+$/.test(path)) {
             this.iojs(path, name, function (path, name, code) {
                 that.setLS(name, path + versionString + code)
                 that.runjs(path, name, code);
             })
-        } else {
+        } else if (/\.css?.+$/.test(path)) {
             this.iocss(path, name, function (code) {
                 document.getElementById(name).appendChild(document.createTextNode(code));
                 that.setLS(name, path + versionString + code)
