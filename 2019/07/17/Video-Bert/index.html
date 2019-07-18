@@ -421,22 +421,25 @@
             <p class="post-title">
                 Video Bert
             </p>
-            <h1 id="VideoBERT"><a href="#VideoBERT" class="headerlink" title="VideoBERT"></a>VideoBERT</h1><p><code>by Google Research</code></p>
-<h3 id="A-Joint-Model-for-Video-and-Language-Representation-Learning"><a href="#A-Joint-Model-for-Video-and-Language-Representation-Learning" class="headerlink" title="A Joint Model for Video and Language Representation Learning"></a>A Joint Model for Video and Language Representation Learning</h3><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>自监督学习在处理大量无标签数据上发挥了重大的作用。然而大多现有的方法只能学习到低级特征，作者提出了一种视觉语言联合模型，无需监督即可学习高级特征。</p>
+            <h1 id="videobert">VideoBERT</h1>
+<p><code>by Google Research</code></p>
+<h3 id="a-joint-model-for-video-and-language-representation-learning">A Joint Model for Video and Language Representation Learning</h3>
+<h2 id="abstract">Abstract</h2>
+<p>自监督学习在处理大量无标签数据上发挥了重大的作用。然而大多现有的方法只能学习到低级特征，作者提出了一种视觉语言联合模型，无需监督即可学习高级特征。</p>
 <p>由于BERT在语言模型上取得了巨大的成功，我们用BERT来学习视觉和语言的token序列的双向联合分布。</p>
 <p>我们在action classification和video captioning等任务上使用这个模型，并且超过了video captioning的State of the art。</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>我们用三种方法来建立视觉和语言的关系：</p>
+<h2 id="introduction">Introduction</h2>
+<p>我们用三种方法来建立视觉和语言的关系：</p>
 <ul>
-<li><p>语音识别来将语音转为文字</p>
-</li>
-<li><p>对预训练视频分类模型的低级时空视觉特征进行向量量化（VQ）</p>
-</li>
-<li>BERT来学习离散token序列的联合分布</li>
+<li><p>语音识别来将语音转为文字</p></li>
+<li>对预训练视频分类模型的低级时空视觉特征进行向量量化（VQ）</li>
+<li><p>BERT来学习离散token序列的联合分布</p></li>
 </ul>
 <p>这个模型可以用于多种任务。例如，我们可以进行文字转视频，也就是给输入的一段文字配上对应的视频。我们也可以进行更传统的视频描述任务。</p>
 <p>总之，这篇paper的主要贡献是：提出一种能获得有语义长时间结构的学习高级视频表达的简单方法</p>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g52zbv1fjuj31e40jyq96.jpg" alt=""></p>
-<h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g53bigugngj31su0icn19.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1g52zbv1fjuj31e40jyq96.jpg"></p>
+<h2 id="models">Models</h2>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g53bigugngj31su0icn19.jpg"></p>
 <p>为了把BERT拓展到视频，我们把视频的预训练模型进行层次向量量化，从而能生成visual words的序列，即视觉语句</p>
 <p>我们把语音识别获得的语句和视觉语句混合，例如：</p>
 <p><code>[CLS] orange chicken with [MASK] sauce [&gt;] v01 [MASK] v08 v72 [SEP]</code></p>
@@ -445,7 +448,7 @@
 <p>BERT中的cloze（完形填空）任务可以自然地用于视觉token序列，而next sentence prediction就没那么直接。</p>
 <p>我们提出一个视觉语言对齐任务，使用 [CLS] 的final hidden state来预测语句是否在时间上对齐了。由于视频中讲到的东西可能不在画面中，这种对齐关系是有干扰的。</p>
 <p>为了克服这一点，我们先随机把相邻句子连接成一个长句子，从而让模型在没有良好对齐的情况下学习语义关系。</p>
-<p>总结：我们用了三种训练方法，文本模型和视频模型分别用完形填空， text-video则用视觉语言对齐任务。总的训练目标是三个目标函数的加权和。文本目标让VideoBERT学习好语言模型，视频目标让它学习到“language<br>model for video”，text-video目标让它学习到两个领域的对应关系。</p>
+<p>总结：我们用了三种训练方法，文本模型和视频模型分别用完形填空， text-video则用视觉语言对齐任务。总的训练目标是三个目标函数的加权和。文本目标让VideoBERT学习好语言模型，视频目标让它学习到“language model for video”，text-video目标让它学习到两个领域的对应关系。</p>
 <p>训练完成后，VideoBERT可以用于多种下游任务</p>
 
         </div>
@@ -482,7 +485,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2019/07/17/mathjax-test/" id="post_nav-older" class="next-content">
+        <a href="/2018/10/27/Python-Code-Style/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
