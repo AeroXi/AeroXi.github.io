@@ -421,15 +421,9 @@
             <p class="post-title">
                 Python Code Style
             </p>
-            <h2 id="风格规范">风格规范</h2>
-<h3 id="缩进">缩进</h3>
-<p>用4个空格来缩进代码 ### 空行 顶级定义之间空两行, 比如函数或者类定义.<br>
-方法定义, 类定义与第一个方法之间, 都应该空一行. ### 空格 括号内不要有空格<br>
-逗号, 分号, 冒号后面加空格（行尾除外），前面不加空格<br>
-索引或切片的左括号前不应加空格<br>
-在二元操作符两边都加上一个空格, 比如赋值(=), 比较(==, &lt;, &gt;, !=, &lt;&gt;, &lt;=, &gt;=, in, not in, is, is not), 布尔(and, or, not)<br>
-算术操作符两边是否有空格应保持一致<br>
-参数的=不加空格</p>
+            <h2 id="风格规范"><a href="#风格规范" class="headerlink" title="风格规范"></a>风格规范</h2><h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>用4个空格来缩进代码</p>
+<h3 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h3><p>顶级定义之间空两行, 比如函数或者类定义.<br>方法定义, 类定义与第一个方法之间, 都应该空一行. </p>
+<h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><p>括号内不要有空格<br>逗号, 分号, 冒号后面加空格（行尾除外），前面不加空格<br>索引或切片的左括号前不应加空格<br>在二元操作符两边都加上一个空格, 比如赋值(=), 比较(==, &lt;, &gt;, !=, &lt;&gt;, &lt;=, &gt;=, in, not in, is, is not), 布尔(and, or, not)<br>算术操作符两边是否有空格应保持一致<br>参数的=不加空格</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Hello Wold!'</span>)</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -592,7 +586,22 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-        </body>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
     
 </html>

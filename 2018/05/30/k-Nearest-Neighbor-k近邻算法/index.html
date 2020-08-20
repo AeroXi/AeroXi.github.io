@@ -421,8 +421,11 @@
             <p class="post-title">
                 k-Nearest Neighbor | k近邻算法
             </p>
-            <h2 id="k-nearest-neighbor">k-Nearest Neighbor</h2>
-<p>kNN是CS231n介绍的第一个分类器，这是一个比较简单的分类器，然而在图像处理上并没有什么卵用，效率和准确率也都比较拙计。 <strong><em> ### Nearest Neighbor kNN最简单的情况是k = 1，即Nearest Neighbor，只取最近的一个 NN算法找到距离测试图像最近的训练样本，并把这一样本的标签当做测试图像的标签。 首先把图像矩阵转为向量，再计算两向量之间的距离 向量间距离有两种计算方法： L1距离： <img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_1%28I_1%2CI_2%29%3D%5Csum_p%7CI%5Ep_1-I%5Ep_2%7C" alt="L1距离"> （各坐标差之和，又叫曼哈顿距离） L2距离： <img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_2%28I_1%2CI_2%29%3D%5Csqrt%7B+%5Csum_p%28I%5Ep_1-I%5Ep_2%29%5E2%7D" alt="L2距离"> 欧几里得距离 sqrt是单调函数，实际使用时可以不开方，不影响比较大小 </em></strong> ### k-Nearest Neighbor 为了获得更好的分类效果，kNN找到最近的k个图像，以出现次数最多的标签作为测试图像的标签。 <img src="https://coolshell.cn/wp-content/uploads/2012/08/220px-KnnClassification.svg_.png" alt="kNN"></p>
+            <h2 id="k-Nearest-Neighbor"><a href="#k-Nearest-Neighbor" class="headerlink" title="k-Nearest Neighbor"></a>k-Nearest Neighbor</h2><p>kNN是CS231n介绍的第一个分类器，这是一个比较简单的分类器，然而在图像处理上并没有什么卵用，效率和准确率也都比较拙计。</p>
+<hr>
+<h3 id="Nearest-Neighbor"><a href="#Nearest-Neighbor" class="headerlink" title="Nearest Neighbor"></a>Nearest Neighbor</h3><p>kNN最简单的情况是k = 1，即Nearest Neighbor，只取最近的一个<br>NN算法找到距离测试图像最近的训练样本，并把这一样本的标签当做测试图像的标签。<br>首先把图像矩阵转为向量，再计算两向量之间的距离<br>向量间距离有两种计算方法：<br>L1距离：<br><img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_1%28I_1%2CI_2%29%3D%5Csum_p%7CI%5Ep_1-I%5Ep_2%7C" alt="L1距离"><br>（各坐标差之和，又叫曼哈顿距离）<br>L2距离：<br><img src="https://www.zhihu.com/equation?tex=%5Cdisplaystyle+d_2%28I_1%2CI_2%29%3D%5Csqrt%7B+%5Csum_p%28I%5Ep_1-I%5Ep_2%29%5E2%7D" alt="L2距离"><br>欧几里得距离<br>sqrt是单调函数，实际使用时可以不开方，不影响比较大小</p>
+<hr>
+<h3 id="k-Nearest-Neighbor-1"><a href="#k-Nearest-Neighbor-1" class="headerlink" title="k-Nearest Neighbor"></a>k-Nearest Neighbor</h3><p>为了获得更好的分类效果，kNN找到最近的k个图像，以出现次数最多的标签作为测试图像的标签。<br><img src="https://coolshell.cn/wp-content/uploads/2012/08/220px-KnnClassification.svg_.png" alt="kNN"></p>
 
         </div>
     
@@ -584,7 +587,22 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-        </body>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
     
 </html>

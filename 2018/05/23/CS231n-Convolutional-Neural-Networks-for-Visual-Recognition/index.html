@@ -421,12 +421,7 @@
             <p class="post-title">
                 CS231n: Convolutional Neural Networks for Visual Recognition
             </p>
-            <h1 id="loss-functions-and-optimization">Loss Functions and Optimization</h1>
-<h2 id="linear-classification-ii">Linear classification II</h2>
-<h1 id="higher-level-representations-image-features">Higher-level representations, image features</h1>
-<h2 id="optimization-stochastic-gradient-descent">Optimization, stochastic gradient descent</h2>
-<h1 id="introduction-to-neural-networks">Introduction to Neural Networks</h1>
-<ul>
+            <h1 id="Loss-Functions-and-Optimization"><a href="#Loss-Functions-and-Optimization" class="headerlink" title="Loss Functions and Optimization"></a>Loss Functions and Optimization</h1><h2 id="Linear-classification-II"><a href="#Linear-classification-II" class="headerlink" title="Linear classification II"></a>Linear classification II</h2><h1 id="Higher-level-representations-image-features"><a href="#Higher-level-representations-image-features" class="headerlink" title="Higher-level representations, image features"></a>Higher-level representations, image features</h1><h2 id="Optimization-stochastic-gradient-descent"><a href="#Optimization-stochastic-gradient-descent" class="headerlink" title="Optimization, stochastic gradient descent"></a>Optimization, stochastic gradient descent</h2><h1 id="Introduction-to-Neural-Networks"><a href="#Introduction-to-Neural-Networks" class="headerlink" title="Introduction to Neural Networks"></a>Introduction to Neural Networks</h1><ul>
 <li>Backpropagation</li>
 <li>Multi-layer Perceptrons</li>
 <li>The neural viewpoint</li>
@@ -584,7 +579,22 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-        </body>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
     
 </html>
